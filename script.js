@@ -1,8 +1,6 @@
 const gridContainer = document.querySelector('.gridContainer');
 
-let rowNum = 16;
-let columnNum = 16;
-
+let prompt = parseInt("What")
 
 makeGrid(16);
 
@@ -22,3 +20,8 @@ function makeGrid (gridNum){
     }
 }
 
+let newGrid = document.querySelector(".newGrid");
+newGrid.addEventListener('click', () => {
+    let gridNum = window.prompt("How big would you like your grid? (16 - 100)")
+    makeGrid(gridNum);
+})
