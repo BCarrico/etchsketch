@@ -11,7 +11,8 @@ function makeGrid (gridNum){
             div2.className = "cell";
             div2.style.width = "25px";
             div2.style.height = "25px";
-            div2.style.background = "red";
+            div2.style.border = "2px solid black";
+            div2.style.background = "grey";
             div2.style.display = 'inline-block';
             div2.style.margin = '1px';
             div1.appendChild(div2);
