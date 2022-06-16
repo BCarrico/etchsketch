@@ -1,7 +1,8 @@
 const gridContainer = document.querySelector('.gridContainer');
 
-makeGrid(16);
 
+makeGrid(16);
+colorCells();
 function makeGrid (gridNum){
     for (r = 0; r < gridNum; r++){
         let div1 = document.createElement('div');
@@ -18,7 +19,7 @@ function makeGrid (gridNum){
             div1.appendChild(div2);
             }
         document.querySelector('.gridContainer').appendChild(div1);
-    }
+        }   
 }
 
 let newGrid = document.querySelector(".newGrid");
@@ -26,8 +27,19 @@ newGrid.addEventListener('click', () => {
     let gridNum = window.prompt("How big would you like your grid? (16 - 100)")
     eraseGrid();
     makeGrid(gridNum);
+    colorCells();
 })
 
 function eraseGrid(){
     gridContainer.innerHTML = '';
+}
+
+function colorCells(){
+    const hoverEffect = document.querySelectorAll('.cell');
+hoverEffect.forEach(cell => {
+    cell.addEventListener('mouseenter', (event) => {
+        event.target.style.backgroundColor = "green";
+        console.log('cell entered');
+    });
+});
 }
