@@ -1,4 +1,39 @@
 .mainContent {
     display: flex;
     justify-content: center;
+    height: 70vh;
+    gap: 100px;
+}
+
+.cell {
+    border: 1px solid black;
+    flex: 1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: block;
+    height: 100%;
+    margin: 0;
+    background: gray;
+}
+
+.gridContainer {
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    height: 70vh;
+    max-width: 500px;
+    max-height: 500px;
+    align-self: center;
+    background: lightgray;
+    border: 12px solid lightblue;
+}
+
+.row {
+    display: flex;
+    flex: 1;
 }

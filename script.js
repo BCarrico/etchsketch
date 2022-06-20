@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector('.gridContainer');
 let currentGridNum = 16;
+let blackSelected = true;
 
 makeGrid(16);
 colorCells();
@@ -11,12 +12,6 @@ function makeGrid (gridNum){
         for (var j = 0; j < gridNum; j++){
             var div2 = document.createElement('div'); 
             div2.className = "cell";
-            div2.style.width = "25px";
-            div2.style.height = "25px";
-            div2.style.border = "2px solid black";
-            div2.style.background = "grey";
-            div2.style.display = 'inline-block';
-            div2.style.margin = '1px';
             div1.appendChild(div2);
             }
         document.querySelector('.gridContainer').appendChild(div1);
@@ -33,15 +28,36 @@ function eraseGrid(){
     gridContainer.innerHTML = '';
 }
 
-function colorCells(){
+function colorCells(color){
     const hoverEffect = document.querySelectorAll('.cell');
-hoverEffect.forEach(cell => {
+    hoverEffect.forEach(cell => {
     cell.addEventListener('mouseenter', (event) => {
-        event.target.style.backgroundColor = "green";
-        console.log('cell entered');
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        console.log(r, g, b);
+        console.log(blackSelected);
+        if (blackSelected == true){
+        event.target.style.backgroundColor = 'black';
+        } else if (blackSelected == false) {
+        event.target.style.backgroundColor = rbg();
+        } else {
+            console.log("color error");
+        }
     });
 });
 }
+
+let blackButton = document.querySelector(".blackColor");
+blackButton.addEventListener('click', () => {
+    blackSelected = true;
+})
+
+
+let randomColorButton = document.querySelector(".randomColor");
+randomColorButton.addEventListener('click', () => {
+    blackSelected = false;
+});
 
 let grid16button = document.querySelector(".grid16");
 grid16button.addEventListener('click', () => {
@@ -66,3 +82,12 @@ function createGrid (int){
     makeGrid(int);
     colorCells();
 }
+
+function rbg () {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)]
+    } return color;
+}
+
